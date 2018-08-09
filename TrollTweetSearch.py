@@ -4,6 +4,14 @@
 import os
 import csv
 
+def wordcount():
+    # weightlist = [{'word':0},]
+
+    for char in '-.,\n':
+        text = text.replace(char,' ')
+        text = text.lower()
+
+
 print('Troll Tweet Finder by Colin Burke:\n')
 query = str(input('Please enter search string: '))
 
@@ -13,7 +21,7 @@ tweetlist = []
 authorlist = []
 
 # Retrieving results section:
-for tweetfile, index in zip(ourlist, range(0, len(ourlist))):
+for tweetfile, index in zip(ourlist, range(0, len(ourlist)-1)):
     print('Now searching through ' + str(tweetfile) + '...')
     with open('./tweets/' + str(tweetfile), encoding="utf8") as fin:
         dr = csv.DictReader(fin)
@@ -46,3 +54,7 @@ for tweet, author in zip(tweetlist, authorlist):
     print('Troll account name: ' + str(author))
     print('Tweet: \n' + str(tweet) + '\n')
 
+text = str(tweetlist)
+# split returns a list of words delimited by sequences of whitespace (including tabs, newlines, etc, like re's \s)
+word_list = text.split()
+print(word_list)
